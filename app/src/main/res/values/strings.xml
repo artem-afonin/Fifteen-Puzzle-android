@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FifteenPuzzle</string>
+    <string name="fifteen_puzzle_main_menu_text">Fifteen Puzzle</string>
+    <string name="start_game_button">Start Game</string>
+    <string name="leaderboards_button">Leaderboards</string>
+    <string name="exit_game_button">Exit Game</string>
+    <string name="_5x5_puzzle_text">5x5 puzzle</string>
+    <string name="_4x4_puzzle_text">4x4 puzzle</string>
+    <string name="_3x3_puzzle_text">3x3 puzzle</string>
+</resources>
