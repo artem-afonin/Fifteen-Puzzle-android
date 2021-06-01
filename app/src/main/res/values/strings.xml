@@ -7,4 +7,11 @@
     <string name="_5x5_puzzle_text">5x5 puzzle</string>
     <string name="_4x4_puzzle_text">4x4 puzzle</string>
     <string name="_3x3_puzzle_text">3x3 puzzle</string>
+    <string name="timer_text">Timer</string>
+    <string name="your_result_text">Your result</string>
+    <string name="submit_record_button">Submit record</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="_3x3">3x3</string>
+    <string name="_5x5">5x5</string>
+    <string name="_4x4">4x4</string>
 </resources>

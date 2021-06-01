@@ -7,7 +7,9 @@ import ru.artem.fifteenpuzzle.R
 
 class PuzzleUnit(
     resources: Resources,
-    val number: Int
+    val number: Int,
+    val width: Int,
+    val height: Int
 ) {
     val bitmap: Bitmap
 
@@ -16,7 +18,7 @@ class PuzzleUnit(
             !in 1..24 -> throw RuntimeException("")
         }
 
-        bitmap = BitmapFactory.decodeResource(
+        val notScaledBitmap = BitmapFactory.decodeResource(
             resources, when (number) {
                 1 -> R.drawable.num_1
                 2 -> R.drawable.num_2
@@ -45,6 +47,7 @@ class PuzzleUnit(
                 else -> throw RuntimeException("")
             }
         )
+        bitmap = Bitmap.createScaledBitmap(notScaledBitmap, width, height, true)
     }
 
     operator fun compareTo(otherPuzzleUnit: PuzzleUnit): Int {

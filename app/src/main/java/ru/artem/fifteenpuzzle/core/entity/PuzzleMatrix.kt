@@ -2,8 +2,14 @@ package ru.artem.fifteenpuzzle.core.entity
 
 import android.content.res.Resources
 import kotlin.math.abs
+import kotlin.random.Random
 
-class PuzzleMatrix(resources: Resources, val size: Int) {
+class PuzzleMatrix(
+    resources: Resources,
+    val size: Int,
+    width: Int,
+    height: Int
+) {
     val matrix: MutableList<MutableList<PuzzleUnit?>> = mutableListOf()
     lateinit var nullUnitIndex: Pair<Int, Int>
 
@@ -17,10 +23,19 @@ class PuzzleMatrix(resources: Resources, val size: Int) {
                     nullUnitIndex = Pair(i, j)
                     break
                 }
-                row.add(PuzzleUnit(resources, index))
+                row.add(
+                    PuzzleUnit(
+                        resources,
+                        index,
+                        width,
+                        height
+                    )
+                )
             }
             matrix.add(row)
         }
+
+        shuffle()
     }
 
     fun move(row: Int, column: Int) {
@@ -43,6 +58,29 @@ class PuzzleMatrix(resources: Resources, val size: Int) {
             matrix[row][column] = nullUnit
             nullUnitIndex = Pair(row, column)
         }
+    }
+
+    private fun shuffle() {
+        for (i in 1..4096) {
+            val row = Random.nextInt(0, size)
+            val col = Random.nextInt(0, size)
+            move(row, col)
+        }
+    }
+
+    fun isSolved(): Boolean {
+        for (i in 0 until size) {
+            for (j in 0 until size) {
+                if (matrix[i][j] == null) {
+                    continue
+                }
+                val positionNumber = i * size + j + 1
+                if (positionNumber != matrix[i][j]?.number) {
+                    return false
+                }
+            }
+        }
+        return true
     }
 
     override fun toString(): String {
